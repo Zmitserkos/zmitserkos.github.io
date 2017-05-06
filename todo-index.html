@@ -1,0 +1,40 @@
+<section class="todoapp container-fluid">
+  <header class="header row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+		  <h1 class="head-title">todos</h1>
+      <button class="share" (click)="modalOpen()">SHARE</button>
+    </div>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+		  <input class="new-todo" placeholder="What needs to be done?" autofocus [(ngModel)]="newTitle" (keyup.enter)="addTodo()">
+    </div>
+	</header>
+
+  <router-outlet></router-outlet>
+
+ 	<footer class="footer row" [hidden]="!data.todos.length">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+  	  <span class="todo-count"><strong>{{getActiveCount()}}</strong> item{{getEnding()}} left</span>
+      <div class="routes">
+        <ul class="filters">
+      		<li class="group" routerLinkActive="selected" [routerLinkActiveOptions]="{exact:true}">
+  	  	  	<a routerLink="">All</a>
+  		    </li>
+    		  <li class="group" routerLinkActive="selected">
+  	  	  	<a routerLink='active'>Active</a>
+  		    </li>
+  	    	<li class="group" routerLinkActive="selected">
+  		    	<a routerLink='completed'>Completed</a>
+  	  	  </li>
+    	  </ul>
+      </div>
+      <button class="clear-completed" (click)="clearCompleted()" *ngIf="hasCompleted()">Clear completed</button>
+    </div>
+  </footer>
+</section>
+<footer class="info">
+	<p>Double-click to edit a todo</p>
+	<p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
+	<p>Created by <a href="">Dzmitry Kasyanenka</a></p>
+	<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+<span defaultOverlayTarget></span>

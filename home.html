@@ -1,0 +1,18 @@
+<section class="main row" [hidden]="!data.todos.length">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3" style="position: relative;">
+    <input class="toggle-all" type="checkbox" [(ngModel)]="data.allCompleted" (change)="markAll()">
+    <label for="toggle-all">Mark all as complete</label>
+    <ul id="todo-list" class="todo-list">
+      <li *ngFor="let todo of data.todos | matchesCompleted:filterParam ; let i = index" (dblclick)="setEditing(todo)"
+          [ngClass]="{completed:todo.completed, editing: todo.editing}">
+        <div class="view">
+          <input class="toggle" type="checkbox" [(ngModel)]="todo.completed" (change)="toggleCompleted()" [hidden]="todo.editing">
+          <label class="todo-text" [hidden]="todo.editing">{{todo.title}}</label>
+          <button class="destroy" (click)="delTodo(todo)" *ngIf="!todo.editing">×</button>
+        </div>
+        <input #editInput id="edit-input" class="edit-text" autofocus="todo.editing" [(ngModel)]="editedText" *ngIf="todo.editing"
+                (keyup.enter)="doBlurEvent(todo, i, $event)" (blur)="saveTodo(todo, i)" (keyup.esc)="cancelEditing(todo)">
+      </li>
+    </ul>
+  </div>
+</section>
