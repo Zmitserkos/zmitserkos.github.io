@@ -1,0 +1,31 @@
+<html>
+<head>
+  <base href="/">
+
+  <title>Todo application</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/app.css">
+
+</head>
+<body>
+  <todo-app></todo-app>
+
+  <script src="libs/shim.min.js"></script>
+  <script src="libs/zone.js"></script> 
+
+  <!-- <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script> -->
+
+  <script src="https://npmcdn.com/reflect-metadata@0.1.3"></script>
+
+  <!-- <script src="node_modules/systemjs/dist/system.src.js"></script> -->
+  <script src="libs/system.src.js"></script>
+
+  <script src="systemjs.config.js"></script>
+  <script>
+    System.import('js').catch(function(err){ console.error(err); });
+  </script>
+</body>
+</html>
